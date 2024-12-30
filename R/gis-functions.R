@@ -1,3 +1,4 @@
+utils::globalVariables(c("name_of_city", "geometry", "x"))
 
 
 #' City coordinates from name
