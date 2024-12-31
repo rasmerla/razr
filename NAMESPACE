@@ -3,4 +3,6 @@
 export("%>%")
 export(city_coords_from_op_str_map)
 export(globe_map)
+export(globe_map_example)
+export(razor)
 importFrom(magrittr,"%>%")

@@ -1,22 +1,5 @@
 utils::globalVariables(c("Y","X", "npts"))
 
-# Map over study sites of the Greenseeker manuscript:
-# library(dplyr)
-# library(tmap)
-# library(tmaptools)
-# library(sf)
-# library(grid)
-# library(spData)
-# library(magrittr)
-
-
-# Globe_function ----------------------------------------------------------------
-
-# library(sf)
-# library(lwgeom)
-# library(dplyr)
-# library(mapview)
-
 
 # globe_map(57.93, 12.530833, alpha_border=0.3,
 # #          col_land = "grey60", col_water = "white",
@@ -239,8 +222,15 @@ globe_map <- function(lat, lon,
 
 
 
+#' Template for a orthographic map
+#'
+#' @return Suggested code
+#' @export
+#'
 
-cat("Examples:\n
+globe_map_example <- function() {
+
+cat("Example:\n
 globe_map(57.93, 12.530833, alpha_border=0.3,
               col_land = \"grey60\", col_water = \"white\",
               alpha_grid = 0.5,
@@ -248,3 +238,4 @@ globe_map(57.93, 12.530833, alpha_border=0.3,
               col_border = \"white\")
     \n
 globe_map(-25, -120, alpha_border=0)")
+}
