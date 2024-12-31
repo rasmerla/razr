@@ -144,6 +144,8 @@ razor_springer_liten <- "
                             @@@@
                               @
 
+
+
 "
 
 
@@ -305,6 +307,8 @@ razor_bira_liten <- "
                              @@@@@@@@@@@@@@@@@@@@@@@@@@
                                  @@@@@@@@@@@@@@@@@@@@@@@
 
+
+
 "
 
 
@@ -320,5 +324,9 @@ razor <- function() {
 
   cat(c(razor_springer_liten, razor_bira_liten)[row_n])
 
+
+  row_n <- sample(c(1,2), size = 1)
+  cat(c("\nBryna, nuppa, fjässa, spånken! Raka rör!",
+        "\n                   Bryna, nuppa, fjässa, spånken! Raka rör!")[row_n])
 
 }
