@@ -31,7 +31,8 @@ utils::globalVariables(c("Y","X", "npts"))
 #' @return An orhtographic map of the world centred on the given coordinates.
 #' @export
 #'
-globe_map <- function(lat, lon,
+globe_map <- function(lat = NULL,
+                      lon = NULL,
                       col_land = "#e9d6bd",
                       col_water = "#abc1b1",
                       col_grid = "aliceblue",
@@ -43,7 +44,8 @@ globe_map <- function(lat, lon,
                       show_coordinate_text=F,
                       bbox_input = NULL,
                       custom_map = NULL,
-                      get_only_crs = NULL) {
+                      get_only_crs = NULL,
+                      place_name=NULL) {
 
   #restore.point("globe", to.global = F)
   # The script does not support s2 geometry
@@ -51,6 +53,23 @@ globe_map <- function(lat, lon,
   if(s2_mode==TRUE) {
     sf::sf_use_s2(FALSE)
   }
+
+
+  if(is.null(lat) & is.null(lon)){
+    #message("No lat or lon provided. Looking for city name:")
+    if(!is.null(place_name)){
+    place_mode <- TRUE
+    message(paste0("Looking for, and centering on: ", place_name))
+    } else {stop("If lat and lon are undefined, the function must have a city name to use.", call. = F)}
+  } else {place_mode <- FALSE}
+
+  if(place_mode == TRUE){
+    city_coords <- razr::city_coords_from_op_str_map(place_name) %>%
+      sf::st_coordinates(city_coords)
+    lat <- city_coords[2]
+    lon <- city_coords[1]
+  }
+
 
   # Define the orthographic projection
   # Choose lat_0 with -90 <= lat_0 <= 90 and lon_0 with -180 <= lon_0 <= 180
