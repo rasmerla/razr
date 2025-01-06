@@ -114,9 +114,10 @@ globe_map <- function(lat, lon,
       )) %>%
         sf::st_polygon() %>% sf::st_sfc(crs = 4326)
     }
-
+    suppressMessages({
     circle_longlat <-
       sf::st_union(sf::st_make_valid(circle_longlat), sf::st_make_valid(rectangle))
+    })
   }
 
   # This visualization shows the visible hemisphere in red
@@ -127,11 +128,17 @@ globe_map <- function(lat, lon,
 
   # A small negative buffer is necessary to avoid polygons still disappearing in a few pathological cases
   # It should not change the shapes too much
-  if(!is.null(custom_map)) {world <- custom_map}
+  if(!is.null(custom_map)) {world <- custom_map} else {
+    world <- world_map
+  }
 
+  suppressWarnings({
+  suppressMessages({
   visible <- sf::st_intersection(sf::st_make_valid(world),
-                                 sf::st_buffer(circle_longlat,-0.09)) %>%
+                                 suppressWarnings({sf::st_buffer(circle_longlat,-0.09)})) %>%
     sf::st_transform(crs = ortho)
+  })
+  })
 
   # DISCLAIMER: This section is the outcome of trial-and-error and I don't claim it is the best approach
   # Resulting polygons are often broken and they need to be fixed
@@ -170,9 +177,9 @@ globe_map <- function(lat, lon,
       result = tryCatch({
         # visible[land,] <- st_buffer(visible[land,], 0) # Sometimes useful sometimes not
         visible[land, ] <- sf::st_make_valid(visible[land, ]) %>%
-          sf::st_collection_extract()
+          suppressWarnings({sf::st_collection_extract()})
       }, error = function(e) {
-        visible[land, ] <<- sf::st_buffer(visible[land, ], 0)
+        visible[land, ] <<- suppressWarnings({sf::st_buffer(visible[land, ], 0)})
       })
     }
   }
@@ -203,14 +210,14 @@ globe_map <- function(lat, lon,
     {if(!is.null(bbox_input))tmap::tm_shape(circle, bbox = bbox_input, is.master = T)} + # Line to cut to bbox, if wanted.
     tmap::tm_polygons(fill = col_water) +
     tmap::tm_shape(visible) +
-    tmap::tm_polygons(col = col_land, border.col = col_border, border.alpha = alpha_border) +
-    #tm_graticules(col = col_grid, alpha = alpha_grid, n.x = 36, n.y = 8) +
+    tmap::tm_polygons(fill = col_land, col = col_border, col_alpha = alpha_border) +
+    #tm_graticules(col = col_grid, fill_alpha = alpha_grid, n.x = 36, n.y = 8) +
     tmap::tm_graticules(col = col_grid, alpha = alpha_grid,
                   x = longs,
                   y = lats,
                   labels.show=show_coordinate_text) +
     tmap::tm_shape(circle) +
-    tmap::tm_polygons(alpha = 0, border.col = "grey45")
+    tmap::tm_polygons(fill_alpha = 0, col = "grey45")
 
   #sf::sf_use_s2(s2_mode)
 

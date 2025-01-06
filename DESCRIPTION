@@ -20,3 +20,5 @@ Imports:
 Suggests: 
     knitr,
     tmap
+Depends: 
+    R (>= 2.10)
