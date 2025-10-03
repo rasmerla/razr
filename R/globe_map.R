@@ -27,6 +27,7 @@ utils::globalVariables(c("Y","X", "npts"))
 #' @param bbox_input Boundary box if you want to display less
 #' @param custom_map Custom globe map to project
 #' @param get_only_crs Logical: Do you wish only to return the CRS of the projection?
+#' @param place_name Optional name of geographic location to centre on. Picked from Open Street Map.
 #'
 #' @return An orhtographic map of the world centred on the given coordinates.
 #' @export

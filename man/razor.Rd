@@ -2,13 +2,13 @@
 % Please edit documentation in R/ascii.R
 \name{razor}
 \alias{razor}
-\title{Razor hälsar på.}
+\title{Razor dyker upp.}
 \usage{
 razor()
 }
 \value{
-Razor i något utförande
+Razor
 }
 \description{
-Razor hälsar på.
+Razor dyker upp.
 }

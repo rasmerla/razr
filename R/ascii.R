@@ -312,9 +312,9 @@ razor_bira_liten <- "
 "
 
 
-#' Razor hälsar på.
+#' Razor dyker upp.
 #'
-#' @return Razor i något utförande
+#' @return Razor
 #' @export
 #'
 #'
@@ -326,7 +326,7 @@ razor <- function() {
 
 
   row_n <- sample(c(1,2), size = 1)
-  cat(c("\nBryna, nuppa, fjässa, spånken! Raka rör!",
-        "\n                   Bryna, nuppa, fjässa, spånken! Raka rör!")[row_n])
+  cat(c("\nBryna, nuppa, fj\u00E4ssa, sp\u00E5nken! Raka r\u00F6r!",
+        "\n                   Bryna, nuppa, fj\u00E4ssa, sp\u00E5nken! Raka r\u00F6r!")[row_n])
 
 }

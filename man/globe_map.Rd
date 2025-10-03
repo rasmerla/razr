@@ -5,8 +5,8 @@
 \title{Title}
 \usage{
 globe_map(
-  lat,
-  lon,
+  lat = NULL,
+  lon = NULL,
   col_land = "#e9d6bd",
   col_water = "#abc1b1",
   col_grid = "aliceblue",
@@ -18,7 +18,8 @@ globe_map(
   show_coordinate_text = F,
   bbox_input = NULL,
   custom_map = NULL,
-  get_only_crs = NULL
+  get_only_crs = NULL,
+  place_name = NULL
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ globe_map(
 \item{custom_map}{Custom globe map to project}
 
 \item{get_only_crs}{Logical: Do you wish only to return the CRS of the projection?}
+
+\item{place_name}{Optional name of geographic location to centre on. Picked from Open Street Map.}
 }
 \value{
 An orhtographic map of the world centred on the given coordinates.
