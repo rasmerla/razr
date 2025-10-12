@@ -239,7 +239,9 @@ globe_map <- function(lat = NULL,
     tmap::tm_shape(circle) +
     tmap::tm_polygons(fill_alpha = 0, col = "grey45")
 
-  #sf::sf_use_s2(s2_mode)
+  if(s2_mode==TRUE) {
+    sf::sf_use_s2(TRUE) # Set back to previous state.
+  }
 
   return(output_map)
 
