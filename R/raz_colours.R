@@ -1,3 +1,4 @@
+#' @export
 raz_colours <- c(
   snyggroed_2 = "#aa0000ff",
   roed_brun = "#671e00ff",
@@ -14,6 +15,11 @@ raz_colours <- c(
   blaa_havs_maettad = "#abc1b1")
 
 
+#' Get nice colours printed
+#'
+#' @returns A printed list with colours
+#' @export
+#'
 print_raz_colours <- function() {
   for (nm in names(raz_colours)) {
     hex <- raz_colours[nm]
