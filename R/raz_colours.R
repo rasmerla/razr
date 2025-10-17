@@ -1,18 +1,21 @@
 #' @export
 raz_colours <- c(
-  snyggroed_2 = "#aa0000ff",
-  roed_brun = "#671e00ff",
-  gulblek = "#e9c549ff",
-  gulsenaps = "#db9a08ff",
-  gulsmuts_2 = "#c59d2cff",
-  gulsmuts = "#d5a611ff",
-  gul_beige = "#e2b659ff",
-  groen_havs_1 = "#97915cff",
-  groen_havs_2 = "#a49e66ff",
-  groen_havs_3 = "#898046ff",
-  land_gul = "#fceea3ff",
-  blaa_havs_blek = "#dddec4ff",
-  blaa_havs_maettad = "#abc1b1")
+  snyggroed_2 = "#aa0000",
+  roed_brun = "#671e00",
+  gulblek = "#e9c549",
+  gulsenaps = "#db9a08",
+  gulsmuts_2 = "#c59d2c",
+  gulsmuts = "#d5a611",
+  gul_beige = "#e2b659",
+  groen_havs_1 = "#97915c",
+  groen_havs_2 = "#a49e66",
+  groen_havs_3 = "#898046",
+  land_gul = "#fceea3",
+  havsbeige_blek = "#dddec4",
+  blaa_havs_maettad = "#abc1b1",
+  havsgraa = "#687a7e",
+  havsblaa = "#7992b0"
+  )
 
 
 #' Get nice colours printed
@@ -26,7 +29,6 @@ print_raz_colours <- function() {
     # crayon has `style` / `make_style` to define arbitrary color
     style_fun <- crayon::make_style(hex, bg=T)
     cat(style_fun(paste0("              ")))
-    cat(paste0(" ", nm, " (", hex, ")\n"))
+    cat(paste0(" - ", hex, " - ", nm, "\n"))
   }
 }
-
