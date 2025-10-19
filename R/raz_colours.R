@@ -14,7 +14,23 @@ raz_colours <- c(
   havsbeige_blek = "#dddec4",
   blaa_havs_maettad = "#abc1b1",
   havsgraa = "#687a7e",
-  havsblaa = "#7992b0"
+  havsblaa = "#7992b0",
+  mörkblå = "#5b7082",
+  ärgrön = "#bcc3b3",
+  saliva = "#a8a99d",
+  aska = "#aeb3b6",
+  duvblå = "#93a5ad",
+  bauhausblå = "#8dbcc0",
+  larimar = "#8cb4bd",
+  tistel = "#79acc4",
+  dalaälv = "#236877",
+  daggkåpa = "#6d9380",
+  mörk_jade = "#7c9692",
+  lammöra = "#aec4ba",
+  tällberg = "#8e3e36",
+  vildvid = "#bc6a41",
+  hobborn = "#dba54f",
+  kvitten = "#ebcf72"
   )
 
 
